@@ -5,11 +5,20 @@ import CardContext from '../../../store/CardContext';
 
 const MealItemForm = (props) => {
   const data = useContext(CardContext);
-  const ref = useRef();
+  const inputRef = useRef();
+
+  const submitAddItemHandler = (event) => {
+    event.preventDefault();
+    console.log('the amount inputted is: ');
+    console.log(inputRef.current.value);
+
+    props.addItem(inputRef.current.value);
+  };
 
   return (
-    <form className={classes.form}>
+    <form className={classes.form} onSubmit={submitAddItemHandler}>
       <Input
+        ref={inputRef}
         label='Amount'
         input={{
           id: props.id,
@@ -19,7 +28,6 @@ const MealItemForm = (props) => {
           step: '1',
           defaultValue: data.items.length,
         }}
-        ref={ref}
       />
       <button>+ Add</button>
     </form>

@@ -5,7 +5,7 @@ const Cart = (props) => {
   const cartItems = (
     <ul className={classes['cart-items']}>
       {[{ id: 'c1', name: 'Sushi', amount: 2, price: 12.99 }].map((item) => {
-        return <li>{item.name}</li>;
+        return <li key={Math.random}>{item.name}</li>;
       })}
     </ul>
   );
