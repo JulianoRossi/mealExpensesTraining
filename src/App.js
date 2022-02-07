@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import ModalContext from './store/ModalContext';
-import CardContextProvider from './store/CardContextProvider';
+import CartContextProvider from './store/CartContextProvider';
 import Header from './components/Layout/Header';
 import Meals from './components/Meals/Meals';
 import Modal from './components/Cart/Modal';
@@ -18,22 +18,22 @@ function App() {
     setCartIsShown(false);
   };
 
-  const contextValues = {
+  const modalContextValues = {
     show: showModalHandler,
     hide: dismissModalHandler,
     items: 0,
   };
 
   return (
-    <CardContextProvider>
-      <ModalContext.Provider value={contextValues}>
+    <CartContextProvider>
+      <ModalContext.Provider value={modalContextValues}>
         {cartIsShown && <Modal onModalHide={dismissModalHandler} />}
         <Header onModalShow={showModalHandler} />
         <main>
           <Meals />
         </main>
       </ModalContext.Provider>
-    </CardContextProvider>
+    </CartContextProvider>
   );
 }
 

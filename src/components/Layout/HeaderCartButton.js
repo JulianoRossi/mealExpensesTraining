@@ -2,13 +2,14 @@ import React, { useContext } from 'react';
 import styles from './HeaderCartButton.module.css';
 import CartIcon from '../Cart/CartIcon.js';
 import ModalContext from '../../store/ModalContext';
-import CardContext from '../../store/CardContext';
+import CartContext from '../../store/CartContext';
 
 export default function HeaderCartButton(props) {
-  console.log('carregou o Card Button');
-  console.log(CardContext);
   const modalContext = useContext(ModalContext);
-  const cardContext = useContext(CardContext);
+  const cartContext = useContext(CartContext);
+
+  console.log('carregou o Card Button');
+  console.log(cartContext);
 
   return (
     <button className={styles.button} onClick={modalContext.show}>
@@ -16,7 +17,7 @@ export default function HeaderCartButton(props) {
         <CartIcon />
       </span>
       <span>Your Cart</span>
-      <span className={styles.badge}>{cardContext.items.length}</span>
+      <span className={styles.badge}>{cartContext.state.items.length}</span>
     </button>
   );
 }

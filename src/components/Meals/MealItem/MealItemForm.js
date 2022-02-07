@@ -1,10 +1,10 @@
 import React, { useContext, useRef } from 'react';
 import classes from './MealItemForm.module.css';
 import Input from '../../UI/Input';
-import CardContext from '../../../store/CardContext';
+import CartContext from '../../../store/CartContext';
 
 const MealItemForm = (props) => {
-  const data = useContext(CardContext);
+  const data = useContext(CartContext);
   const inputRef = useRef();
 
   const submitAddItemHandler = (event) => {
@@ -26,7 +26,7 @@ const MealItemForm = (props) => {
           max: '5',
           min: '1',
           step: '1',
-          defaultValue: data.items.length,
+          defaultValue: data.state.items.length,
         }}
       />
       <button>+ Add</button>

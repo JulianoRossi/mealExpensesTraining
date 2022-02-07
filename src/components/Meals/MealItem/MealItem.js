@@ -1,30 +1,27 @@
 import React, { useContext } from 'react';
 import styles from './MealItem.module.css';
 import MealItemForm from './MealItemForm';
-import CardContext from '../../../store/CardContext';
+import CartContext from '../../../store/CartContext';
 
 const MealItem = (props) => {
-  const mealsContext = useContext(CardContext);
+  const mealsContext = useContext(CartContext);
 
   const addItemHandler = (amount) => {
     console.log('meals context is: ');
     console.log(mealsContext);
 
     const newItemObject = {
-      key: Math.random(),
-      name: props.name,
-      description: props.description,
-      price: props.price,
-      amount: amount,
+      type: 'ADD',
+      newItem: {
+        key: Math.random(),
+        name: props.name,
+        description: props.description,
+        price: props.price,
+        amount: amount,
+      },
     };
 
-    mealsContext.items.push(newItemObject);
-    console.log(mealsContext.items);
-    mealsContext.totalAmount = mealsContext.items.reduce((acc, item) => {
-      console.log(`acc: ${acc}`);
-      console.log(`item: ${item}`);
-      return (acc = acc + +item.price * +item.amount);
-    }, 0);
+    mealsContext.action(newItemObject);
 
     console.log(`mealsContext updated is`);
     console.log(mealsContext);
