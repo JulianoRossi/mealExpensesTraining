@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import ReactDOM from 'react-dom';
 import classes from './Modal.module.css';
 import Cart from './Cart';
-import Context from '../../store/context';
+import Context from '../../store/ModalContext';
 
 const Backdrop = (props) => {
   return <div className={classes.backdrop} onClick={props.onClick} />;

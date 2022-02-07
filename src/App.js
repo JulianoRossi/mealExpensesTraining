@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import Context from './store/context';
+import ModalContext from './store/ModalContext';
 import CardContextProvider from './store/CardContextProvider';
 import Header from './components/Layout/Header';
 import Meals from './components/Meals/Meals';
@@ -26,13 +26,13 @@ function App() {
 
   return (
     <CardContextProvider>
-      <Context.Provider value={contextValues}>
+      <ModalContext.Provider value={contextValues}>
         {cartIsShown && <Modal onModalHide={dismissModalHandler} />}
         <Header onModalShow={showModalHandler} />
         <main>
           <Meals />
         </main>
-      </Context.Provider>
+      </ModalContext.Provider>
     </CardContextProvider>
   );
 }

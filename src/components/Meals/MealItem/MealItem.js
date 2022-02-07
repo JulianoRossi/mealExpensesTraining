@@ -7,7 +7,7 @@ const MealItem = (props) => {
   const mealsContext = useContext(CardContext);
 
   const addItemHandler = (amount) => {
-    console.log('meals contexs is: ');
+    console.log('meals context is: ');
     console.log(mealsContext);
 
     const newItemObject = {
