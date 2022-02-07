@@ -5,10 +5,10 @@ import CartContext from '../../store/CartContext';
 const Cart = (props) => {
   const context = useContext(CartContext);
   console.log('state do cart é:');
-  console.log(context.state);
+  console.log(context);
   const cartItems = (
     <ul className={classes['cart-items']}>
-      {context.state.items.map((item) => {
+      {context.items.map((item) => {
         return <li key={Math.random()}>{item.name}</li>;
       })}
     </ul>
@@ -18,7 +18,7 @@ const Cart = (props) => {
       {cartItems}
       <div className={classes.total}>
         <span>Total Amount</span>
-        <span>{context.state.totalAmount.toFixed(2)}</span>
+        <span>{context.totalAmount.toFixed(2)}</span>
       </div>
       <div className={classes.actions}>
         <button className={classes['button--alt']} onClick={props.onClick}>

@@ -11,17 +11,14 @@ const MealItem = (props) => {
     console.log(mealsContext);
 
     const newItemObject = {
-      type: 'ADD',
-      newItem: {
-        key: Math.random(),
-        name: props.name,
-        description: props.description,
-        price: props.price,
-        amount: amount,
-      },
+      key: Math.random(),
+      name: props.name,
+      description: props.description,
+      price: props.price,
+      amount: amount,
     };
 
-    mealsContext.action(newItemObject);
+    mealsContext.addItem(newItemObject);
 
     console.log(`mealsContext updated is`);
     console.log(mealsContext);

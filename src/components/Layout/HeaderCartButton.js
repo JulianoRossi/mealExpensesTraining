@@ -17,7 +17,7 @@ export default function HeaderCartButton(props) {
         <CartIcon />
       </span>
       <span>Your Cart</span>
-      <span className={styles.badge}>{cartContext.state.items.length}</span>
+      <span className={styles.badge}>{cartContext.items.length}</span>
     </button>
   );
 }

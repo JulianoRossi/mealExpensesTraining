@@ -26,7 +26,7 @@ const MealItemForm = (props) => {
           max: '5',
           min: '1',
           step: '1',
-          defaultValue: data.state.items.length,
+          defaultValue: data.items.length,
         }}
       />
       <button>+ Add</button>
