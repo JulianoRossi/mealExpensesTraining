@@ -8,7 +8,7 @@ export default function HeaderCartButton(props) {
   const modalContext = useContext(ModalContext);
   const cartContext = useContext(CartContext);
 
-  console.log('carregou o Card Button');
+  console.log('Card Button loaded');
   console.log(cartContext);
 
   return (
