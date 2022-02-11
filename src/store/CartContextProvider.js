@@ -8,14 +8,13 @@ const initialState = {
 };
 
 const updateCartData = (state, action) => {
-  if (action.type === 'ADD') {
-    const itemIndex = state.items.findIndex((item) => {
-      console.log(item.name);
-      return item.name === action.item.name;
-    });
-    console.log(`index é : ${itemIndex}`);
-    let newArray = [...state.items];
+  let newArray = [...state.items];
 
+  const itemIndex = state.items.findIndex((item) => {
+    return item.name === action.item.name;
+  });
+
+  if (action.type === 'ADD') {
     if (itemIndex >= 0) {
       newArray[itemIndex] = {
         ...state.items[itemIndex],
@@ -24,21 +23,25 @@ const updateCartData = (state, action) => {
     } else {
       newArray = state.items.concat(action.item);
     }
-
-    const newTotalAmountOfItems =
-      +state.totalAmountOfItems + +action.item.amount;
-    const newTotalAmount = newArray.reduce((acc, curr) => {
-      return (acc = acc + +curr.amount * +curr.price);
-    }, 0);
-
-    console.log('newest items updatedCartData');
-    console.log(newArray);
-    return {
-      items: newArray,
-      totalAmountOfItems: newTotalAmountOfItems,
-      totalAmount: newTotalAmount,
-    };
+  } else if (action.type === 'REMOVE') {
+    if (itemIndex >= 0) {
+      newArray[itemIndex] = {
+        ...state.items[itemIndex],
+        amount: +state.items[itemIndex].amount - +action.item.amount,
+      };
+    }
   }
+
+  const newTotalAmountOfItems = +state.totalAmountOfItems + +action.item.amount;
+  const newTotalAmount = newArray.reduce((acc, curr) => {
+    return (acc = acc + +curr.amount * +curr.price);
+  }, 0);
+
+  return {
+    items: newArray,
+    totalAmountOfItems: newTotalAmountOfItems,
+    totalAmount: newTotalAmount,
+  };
 };
 
 function CartContextProvider(props) {

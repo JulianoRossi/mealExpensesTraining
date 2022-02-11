@@ -16,7 +16,7 @@ const Cart = (props) => {
             name={item.name}
             price={item.price}
             amount={item.amount}
-            onRemove={context.removeItem.bind(null, { ...item, amount: -1 })}
+            onRemove={context.removeItem.bind(null, { ...item, amount: 1 })}
             onAdd={context.addItem.bind(null, { ...item, amount: 1 })}
           />
         );
