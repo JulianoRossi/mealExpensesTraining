@@ -19,9 +19,6 @@ const MealItem = (props) => {
     };
 
     mealsContext.addItem(newItemObject);
-
-    console.log(`mealsContext updated is`);
-    console.log(mealsContext);
   };
 
   return (

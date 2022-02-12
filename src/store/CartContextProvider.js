@@ -36,7 +36,12 @@ const updateCartData = (state, action) => {
   const newTotalAmount = newArray.reduce((acc, curr) => {
     return (acc = acc + +curr.amount * +curr.price);
   }, 0);
-
+  // console.log('CardState');
+  // console.log({
+  //   items: newArray,
+  //   totalAmountOfItems: newTotalAmountOfItems,
+  //   totalAmount: newTotalAmount,
+  // });
   return {
     items: newArray,
     totalAmountOfItems: newTotalAmountOfItems,
@@ -48,8 +53,7 @@ function CartContextProvider(props) {
   const [cartDataState, dispatch] = useReducer(updateCartData, initialState);
 
   const addNewItem = (item) => {
-    console.log('o item adicionado é:');
-    console.log(item);
+    console.log('adicionando novo item');
     return dispatch({ type: 'ADD', item: item });
   };
 
